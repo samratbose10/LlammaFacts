@@ -21,8 +21,8 @@ const facts = [
     "Llamas have padded, two-toed feet that are well adapted for walking on rough terrain."
 ];
 
-function gtRandomFact() {
-    const randomdex = Math.floor(Math.random() * facts.length);
+function getRandomFact() {
+    const randomIndex = Math.floor(Math.random() * facts.length);
     return facts[randomIndex];
 }
 
