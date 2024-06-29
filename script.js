@@ -21,13 +21,26 @@ const facts = [
     "Llamas have padded, two-toed feet that are well adapted for walking on rough terrain."
 ];
 
+let factHistory = [];
+
 function getRandomFact() {
     const randomIndex = Math.floor(Math.random() * facts.length);
     return facts[randomIndex];
 }
 
 function updateFact() {
-    document.getElementById('fact').innerText = getRandomFact();
+    const newFact = getRandomFact();
+    document.getElementById('fact').innerText = newFact;
+    factHistory.unshift(newFact);
+    if (factHistory.length > 5) {
+        factHistory.pop();
+    }
+    updateHistory();
+}
+
+function updateHistory() {
+    const historyDiv = document.getElementById('history');
+    historyDiv.innerHTML = '<strong>Fact History:</strong><br>' + factHistory.join('<br>');
 }
 
 function updateDateTime() {
@@ -36,7 +49,13 @@ function updateDateTime() {
     document.getElementById('datetime').innerText = dateTimeString;
 }
 
-document.getElementById('newFactButton').addEventListener('click', updateFact);
+document.getElementById('newFactButton').addEventListener('click', () => {
+    updateFact();
+    document.getElementById('newFactButton').classList.add('clicked');
+    setTimeout(() => {
+        document.getElementById('newFactButton').classList.remove('clicked');
+    }, 200);
+});
 
 updateFact();
 updateDateTime();
