@@ -6,6 +6,15 @@ body {
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     font-family: 'Helvetica Neue', Arial, sans-serif;
     margin: 0;
+    overflow: hidden;
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .container {
@@ -25,6 +34,12 @@ h1 {
     color: #333;
     font-size: 2em;
     margin-bottom: 20px;
+}
+
+#datetime {
+    margin: 10px 0;
+    font-size: 1em;
+    color: #777;
 }
 
 #fact {
@@ -52,4 +67,12 @@ button:hover {
 
 button:active {
     transform: translateY(0);
+}
+
+#history {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #888;
+    max-height: 150px;
+    overflow-y: auto;
 }

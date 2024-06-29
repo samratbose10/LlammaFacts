@@ -30,7 +30,15 @@ function updateFact() {
     document.getElementById('fact').innerText = getRandomFact();
 }
 
+function updateDateTime() {
+    const now = new Date();
+    const dateTimeString = now.toLocaleString();
+    document.getElementById('datetime').innerText = dateTimeString;
+}
+
 document.getElementById('newFactButton').addEventListener('click', updateFact);
 
 updateFact();
+updateDateTime();
 setInterval(updateFact, 3600000); 
+setInterval(updateDateTime, 1000); 
